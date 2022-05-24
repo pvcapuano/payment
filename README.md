@@ -1,6 +1,6 @@
 ## Resumo: 
 
-Dashboard para controle de sistema interno. Aplicação web desenvolvida em ReactJs.
+Dashboard para controle de sistema interno. Aplicação web responsiva desenvolvida em ReactJs.
 
 ## Rodando o projeto:
 
