@@ -1,32 +1,15 @@
 import React from 'react'
 
-import {
-  CButton,
-  CButtonGroup,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCol,
-  CProgress,
-  CRow,
-} from '@coreui/react'
+import { CButtonGroup, CCard, CCardBody, CCol, CRow } from '@coreui/react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
-import CIcon from '@coreui/icons-react'
-import { cilCloudDownload } from '@coreui/icons'
 
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
+import { cilCircle, cilDollar } from '@coreui/icons'
+import CIcon from '@coreui/icons-react'
 
 const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
-
-  const progressExample = [
-    { title: 'Visits', value: '29.703 Users', percent: 40, color: 'success' },
-    { title: 'Unique', value: '24.093 Users', percent: 20, color: 'info' },
-    { title: 'Pageviews', value: '78.706 Views', percent: 60, color: 'warning' },
-    { title: 'New Users', value: '22.123 Users', percent: 80, color: 'danger' },
-    { title: 'Bounce Rate', value: 'Average Rate', percent: 40.15, color: 'primary' },
-  ]
 
   return (
     <>
@@ -35,48 +18,48 @@ const Dashboard = () => {
         <CCardBody>
           <CRow>
             <CCol sm={5}>
-              <h4 id="traffic" className="card-title mb-0">
-                Traffic
-              </h4>
-              <div className="small text-medium-emphasis">January - July 2021</div>
+              <h5 id="traffic" className="card-title mb-0">
+                <CIcon style={{ color: 'green' }} size="lg" icon={cilDollar} /> Faturamento vs Custo
+                Fixo
+              </h5>
             </CCol>
-            <CCol sm={7} className="d-none d-md-block">
-              <CButton color="primary" className="float-end">
-                <CIcon icon={cilCloudDownload} />
-              </CButton>
+            <CCol sm={7} className="d- d-md-block">
               <CButtonGroup className="float-end me-3">
-                {['Day', 'Month', 'Year'].map((value) => (
-                  <CButton
-                    color="outline-secondary"
-                    key={value}
-                    className="mx-0"
-                    active={value === 'Month'}
-                  >
-                    {value}
-                  </CButton>
-                ))}
+                <h7 className="card-title mb-0">
+                  <CIcon style={{ color: 'green' }} size="sm" icon={cilCircle} /> Faturamento
+                </h7>
+                <h7 className="p-1"> </h7>
+                <h7 className="card-title mb-0">
+                  <CIcon style={{ color: 'red' }} size="sm" icon={cilCircle} /> Custo Fixo
+                </h7>
               </CButtonGroup>
             </CCol>
           </CRow>
           <CChartLine
             style={{ height: '300px', marginTop: '40px' }}
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
               datasets: [
                 {
                   label: 'My First dataset',
-                  backgroundColor: hexToRgba(getStyle('--cui-info'), 10),
-                  borderColor: getStyle('--cui-info'),
-                  pointHoverBackgroundColor: getStyle('--cui-info'),
+                  backgroundColor: hexToRgba(getStyle('--cui-danger'), 10),
+                  borderColor: getStyle('--cui-danger'),
+                  pointHoverBackgroundColor: getStyle('--cui-danger'),
                   borderWidth: 2,
                   data: [
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
                   ],
                   fill: true,
                 },
@@ -87,23 +70,20 @@ const Dashboard = () => {
                   pointHoverBackgroundColor: getStyle('--cui-success'),
                   borderWidth: 2,
                   data: [
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
-                    random(50, 200),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
+                    random(0, 400),
                   ],
-                },
-                {
-                  label: 'My Third dataset',
-                  backgroundColor: 'transparent',
-                  borderColor: getStyle('--cui-danger'),
-                  pointHoverBackgroundColor: getStyle('--cui-danger'),
-                  borderWidth: 1,
-                  borderDash: [8, 5],
-                  data: [65, 65, 65, 65, 65, 65, 65],
                 },
               ],
             }}
@@ -121,11 +101,13 @@ const Dashboard = () => {
                   },
                 },
                 y: {
-                  ticks: {
-                    beginAtZero: true,
-                    maxTicksLimit: 5,
-                    stepSize: Math.ceil(250 / 5),
-                    max: 250,
+                  scales: {
+                    min: 0,
+                    max: 400,
+                    ticks: {
+                      // forces step size to be 50 units
+                      stepSize: 50,
+                    },
                   },
                 },
               },
@@ -143,19 +125,6 @@ const Dashboard = () => {
             }}
           />
         </CCardBody>
-        <CCardFooter>
-          <CRow xs={{ cols: 1 }} md={{ cols: 5 }} className="text-center">
-            {progressExample.map((item, index) => (
-              <CCol className="mb-sm-2 mb-0" key={index}>
-                <div className="text-medium-emphasis">{item.title}</div>
-                <strong>
-                  {item.value} ({item.percent}%)
-                </strong>
-                <CProgress thin className="mt-2" color={item.color} value={item.percent} />
-              </CCol>
-            ))}
-          </CRow>
-        </CCardFooter>
       </CCard>
     </>
   )

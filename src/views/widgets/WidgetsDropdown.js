@@ -1,30 +1,7 @@
 import React from 'react'
-import {
-  CRow,
-  CCol,
-  CDropdown,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownToggle,
-  CWidgetStatsA,
-  CCard,
-  CCardBody,
-  CCardSubtitle,
-  CCardTitle,
-  CCardText,
-} from '@coreui/react'
-import { getStyle } from '@coreui/utils'
-import { CChartBar, CChartLine } from '@coreui/react-chartjs'
+import { CRow, CCol, CCard, CCardBody, CCardSubtitle, CCardTitle, CCardText } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import {
-  cilArrowBottom,
-  cilArrowTop,
-  cilOptions,
-  cilCart,
-  cilDollar,
-  cilLoop,
-  cilUser,
-} from '@coreui/icons'
+import { cilArrowBottom, cilArrowTop, cilCart, cilDollar, cilLoop, cilUser } from '@coreui/icons'
 
 const WidgetsDropdown = () => {
   return (
