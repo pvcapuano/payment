@@ -4,10 +4,10 @@ Dashboard para controle de sistema interno. Aplicação web responsiva desenvolv
 
 ## Rodando o projeto:
 
-* git clone https://github.com/pvcapuano/payment.git
+* git clone https://github.com/pvcapuano/paytient.git
 * cd paytient
 * npm i ou yarn install (instala todas as dependências)
-* npm start ou yarn start (inicia o projeto)
+* npm start ou yarn start (inicia o projeto localmente no https://localhost:3000 )
 
 ## Projeto
 
