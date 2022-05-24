@@ -1,6 +1,6 @@
 ## Resumo: 
 
-Dashboard para controle de sistema interno. Aplicação web desenvolvida em ReactJs. Foi utilizada a <a href="https://pokeapi.co/">PokeAPI</a> para obter as informações necessárias. 
+Dashboard para controle de sistema interno. Aplicação web desenvolvida em ReactJs.
 
 ## Rodando o projeto:
 
