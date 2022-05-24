@@ -7,41 +7,43 @@ import {
   CDropdownItem,
   CDropdownToggle,
   CWidgetStatsA,
+  CCard,
+  CCardBody,
+  CCardSubtitle,
+  CCardTitle,
+  CCardText,
 } from '@coreui/react'
 import { getStyle } from '@coreui/utils'
 import { CChartBar, CChartLine } from '@coreui/react-chartjs'
 import CIcon from '@coreui/icons-react'
-import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
+import { cilArrowBottom, cilArrowTop, cilOptions, cilCart } from '@coreui/icons'
 
 const WidgetsDropdown = () => {
   return (
     <CRow>
       <CCol sm={6} lg={3}>
+        <CCard className="mb-4">
+          <CCardBody>
+            <CCardTitle>
+              <CIcon style={{ color: 'blue' }} size="xl" icon={cilCart} /> Vendas
+            </CCardTitle>
+            <CCardText className="text-center mb-4 fs-1 fw-bold">245</CCardText>
+            <CCardSubtitle className="text-center">
+              <CIcon style={{ color: 'green' }} icon={cilArrowTop} />
+              12,67%
+            </CCardSubtitle>
+          </CCardBody>
+        </CCard>
         <CWidgetStatsA
           className="mb-4"
           color="primary"
           value={
             <>
-              26K{' '}
-              <span className="fs-6 fw-normal">
-                (-12.4% <CIcon icon={cilArrowBottom} />)
-              </span>
+              <CIcon size="lg" icon={cilCart} color="light-color" />
+              <span className="fs-6 fw-normal"> Vendas</span>
             </>
           }
           title="Users"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
           chart={
             <CChartLine
               className="mt-3 mx-3"

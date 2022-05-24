@@ -9,7 +9,7 @@ import {
   cilSettings,
   cilSpreadsheet,
 } from '@coreui/icons'
-import { CNavItem } from '@coreui/react'
+import { CNavGroup, CNavItem } from '@coreui/react'
 
 const _nav = [
   {
@@ -52,10 +52,22 @@ const _nav = [
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
   },
   {
-    component: CNavItem,
+    component: CNavGroup,
     name: 'Configurações',
     to: '/configuracoes',
     icon: <CIcon icon={cilSettings} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'Usuários',
+        to: '/configuracoes/usuarios',
+      },
+      {
+        component: CNavItem,
+        name: 'Permissões',
+        to: '/configuracoes/permissoes',
+      },
+    ],
   },
 ]
 
