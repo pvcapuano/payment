@@ -1,183 +1,76 @@
-import React from 'react'
-
 import {
-  CAvatar,
-  CProgress,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
+  CButton,
+  CCol,
+  CForm,
+  CFormInput,
+  CFormSelect,
+  CModal,
+  CModalBody,
+  CModalFooter,
+  CModalHeader,
+  CModalTitle,
+  CRow,
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
-  cilPeople,
-} from '@coreui/icons'
-
-import avatar1 from 'src/assets/images/avatars/1.jpg'
-import avatar2 from 'src/assets/images/avatars/2.jpg'
-import avatar3 from 'src/assets/images/avatars/3.jpg'
-import avatar4 from 'src/assets/images/avatars/4.jpg'
-import avatar5 from 'src/assets/images/avatars/5.jpg'
-import avatar6 from 'src/assets/images/avatars/6.jpg'
+import React, { useState } from 'react'
 
 const Clientes = () => {
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: 'success' },
-      user: {
-        name: 'Yiorgos Avraamu',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'USA', flag: cifUs },
-      usage: {
-        value: 50,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: '10 sec ago',
-    },
-    {
-      avatar: { src: avatar2, status: 'danger' },
-      user: {
-        name: 'Avram Tarasios',
-        new: false,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Brazil', flag: cifBr },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'info',
-      },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: '5 minutes ago',
-    },
-    {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'India', flag: cifIn },
-      usage: {
-        value: 74,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'warning',
-      },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: '1 hour ago',
-    },
-    {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'France', flag: cifFr },
-      usage: {
-        value: 98,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'danger',
-      },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Last month',
-    },
-    {
-      avatar: { src: avatar5, status: 'success' },
-      user: {
-        name: 'Agapetus Tadeáš',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Spain', flag: cifEs },
-      usage: {
-        value: 22,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'primary',
-      },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'Last week',
-    },
-    {
-      avatar: { src: avatar6, status: 'danger' },
-      user: {
-        name: 'Friderik Dávid',
-        new: true,
-        registered: 'Jan 1, 2021',
-      },
-      country: { name: 'Poland', flag: cifPl },
-      usage: {
-        value: 43,
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
-      },
-      payment: { name: 'Amex', icon: cibCcAmex },
-      activity: 'Last week',
-    },
-  ]
+  const [visible, setVisible] = useState(false)
+
   return (
     <>
-      <CTable align="middle" className="mb-0 border" hover responsive>
-        <CTableHead color="light">
-          <CTableRow>
-            <CTableHeaderCell className="text-center">
-              <CIcon icon={cilPeople} />
-            </CTableHeaderCell>
-            <CTableHeaderCell>User</CTableHeaderCell>
-            <CTableHeaderCell className="text-center">Country</CTableHeaderCell>
-            <CTableHeaderCell>Usage</CTableHeaderCell>
-            <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
-            <CTableHeaderCell>Activity</CTableHeaderCell>
-          </CTableRow>
-        </CTableHead>
-        <CTableBody>
-          {tableExample.map((item, index) => (
-            <CTableRow v-for="item in tableItems" key={index}>
-              <CTableDataCell className="text-center">
-                <CAvatar size="md" src={item.avatar.src} status={item.avatar.status} />
-              </CTableDataCell>
-              <CTableDataCell>
-                <div>{item.user.name}</div>
-                <div className="small text-medium-emphasis">
-                  <span>{item.user.new ? 'New' : 'Recurring'}</span> | Registered:{' '}
-                  {item.user.registered}
-                </div>
-              </CTableDataCell>
-              <CTableDataCell className="text-center">
-                <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
-              </CTableDataCell>
-              <CTableDataCell>
-                <div className="clearfix">
-                  <div className="float-start">
-                    <strong>{item.usage.value}%</strong>
-                  </div>
-                  <div className="float-end">
-                    <small className="text-medium-emphasis">{item.usage.period}</small>
-                  </div>
-                </div>
-                <CProgress thin color={item.usage.color} value={item.usage.value} />
-              </CTableDataCell>
-              <CTableDataCell className="text-center">
-                <CIcon size="xl" icon={item.payment.icon} />
-              </CTableDataCell>
-              <CTableDataCell>
-                <div className="small text-medium-emphasis">Last login</div>
-                <strong>{item.activity}</strong>
-              </CTableDataCell>
-            </CTableRow>
-          ))}
-        </CTableBody>
-      </CTable>
+      <CRow className="mb-4 ">
+        <CCol sm={12} className="d-flex justify-content-between  align-items-start ">
+          <h3>Cadastrar cliente</h3>
+        </CCol>
+      </CRow>
+
+      <CForm className="row g-3">
+        <CCol md={12}>
+          <CFormInput type="email" id="inputEmail4" label="Nome" placeholder="Nome" />
+        </CCol>
+        <CCol md={12}>
+          <CFormInput type="password" id="inputPassword4" label="Senha" placeholder="Senha" />
+        </CCol>
+        <CCol xs={12}>
+          <CFormInput id="inputAddress" label="Endereço" placeholder="Endereço" />
+        </CCol>
+
+        <CCol md={6}>
+          <CFormInput id="inputCity" label="Cidade" />
+        </CCol>
+        <CCol md={4}>
+          <CFormSelect id="inputState" label="Estado">
+            <option>...</option>
+            <option>Rio de Janeiro</option>
+            <option>São Paulo</option>
+            <option>Rio Grande do Sul</option>
+            <option>Ceará</option>
+          </CFormSelect>
+        </CCol>
+        <CCol md={2}>
+          <CFormInput id="inputZip" label="Cep" />
+        </CCol>
+
+        <CCol xs={12}>
+          <CButton onClick={() => setVisible(!visible)} color="success">
+            Salvar
+          </CButton>
+          <CModal visible={visible} onClose={() => setVisible(false)}>
+            <CModalHeader onClose={() => setVisible(false)}>
+              <CModalTitle>Cadastrar cliente</CModalTitle>
+            </CModalHeader>
+            <CModalBody>Você confirma o cadastro do cliente?</CModalBody>
+            <CModalFooter>
+              <CButton color="secondary" onClick={() => setVisible(false)}>
+                Fechar
+              </CButton>
+              <CButton color="primary " onClick={() => setVisible(false)}>
+                Salvar alterações
+              </CButton>
+            </CModalFooter>
+          </CModal>
+        </CCol>
+      </CForm>
     </>
   )
 }

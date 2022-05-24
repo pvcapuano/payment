@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { CButtonGroup, CCard, CCardBody, CCol, CRow } from '@coreui/react'
+import { CButton, CButtonGroup, CCard, CCardBody, CCol, CRow } from '@coreui/react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
 
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
-import { cilCircle, cilDollar } from '@coreui/icons'
+import { cilCircle, cilDollar, cilFilter } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
 
 const Dashboard = () => {
@@ -13,6 +13,17 @@ const Dashboard = () => {
 
   return (
     <>
+      <CRow className="mb-4 ">
+        <CCol sm={12} className="d-flex justify-content-between  align-items-start ">
+          <h3>Indicadores</h3>
+
+          <CButton color="success" className="float-end btn-sm">
+            <CIcon icon={cilFilter} />
+            Filtrar
+          </CButton>
+        </CCol>
+      </CRow>
+
       <WidgetsDropdown />
       <CCard className="mb-4">
         <CCardBody>
